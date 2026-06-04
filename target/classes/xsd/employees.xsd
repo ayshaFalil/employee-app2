@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/employeeapi/ws"
+           xmlns:tns="http://example.com/employeeapi/ws"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="EmployeeType">
+        <xs:sequence>
+            <xs:element name="id" type="xs:long" minOccurs="0"/>
+            <xs:element name="departmentId" type="xs:long" minOccurs="0"/>
+            <xs:element name="firstName" type="xs:string" minOccurs="0"/>
+            <xs:element name="lastName" type="xs:string" minOccurs="0"/>
+            <xs:element name="email" type="xs:string" minOccurs="0"/>
+            <xs:element name="phone" type="xs:string" minOccurs="0"/>
+            <xs:element name="jobTitle" type="xs:string" minOccurs="0"/>
+            <xs:element name="salary" type="xs:long" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="GetEmployeeByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetEmployeeByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employee" type="tns:EmployeeType" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CreateEmployeeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employee" type="tns:EmployeeType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="CreateEmployeeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employee" type="tns:EmployeeType" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="PatchEmployeeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+                <xs:element name="employee" type="tns:EmployeeType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="PatchEmployeeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employee" type="tns:EmployeeType" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteEmployeeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteEmployeeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
